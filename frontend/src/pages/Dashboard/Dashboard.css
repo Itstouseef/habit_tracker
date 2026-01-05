@@ -1,0 +1,192 @@
+/* src/pages/Dashboard/Dashboard.css */
+
+/* ---------- Root Colors ---------- */
+:root {
+  --primary-color: #2c666e;      /* Header/Footer color */
+  --accent-color: #4caf50;       /* For progress bars */
+  --secondary-color: #1976d2;    /* Buttons hover */
+  --bg-light: #f5f9fa;
+  --card-bg: #ffffff;
+  --text-color: #1f1f1f;
+}
+
+/* ---------- Container ---------- */
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 1.5rem;
+  max-width: 1200px;
+  margin: auto;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--text-color);
+}
+
+.dashboard-container h1 {
+  margin-bottom: 20px;
+}
+
+/* ---------- Today Summary ---------- */
+.dashboard-today-summary {
+  background: var(--card-bg);
+  padding: 1.25rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dashboard-today-summary h3 {
+  font-size: 1.2rem;
+  color: var(--primary-color);
+}
+
+.dashboard-today-summary p {
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.dashboard-today-summary button {
+  padding: 0.5rem 1rem;
+  border-radius: 12px;
+  border: none;
+  background-color: var(--primary-color);
+  color: #fff;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.dashboard-today-summary button:hover {
+  background-color: var(--secondary-color);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* ---------- Quick Stats ---------- */
+.quick-stats-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.quick-stat-card {
+  flex: 1 1 150px;
+  background: linear-gradient(145deg, var(--bg-light), #e6f0f2);
+  padding: 1rem;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.quick-stat-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+}
+
+.quick-stat-card h4 {
+  font-size: 1rem;
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+}
+
+.quick-stat-card p {
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+/* ---------- Top Goals ---------- */
+.top-goals-section {
+  background: var(--card-bg);
+  padding: 1.25rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.top-goals-section h3 {
+  margin-bottom: 12px;
+  color: var(--primary-color);
+}
+
+.goal-card {
+  background-color: var(--bg-light);
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  margin: 0.5rem 0;
+  position: relative;
+}
+
+.goal-card h4 {
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+
+.goal-progress {
+  width: 100%;
+  height: 10px;
+  background-color: #cfd8dc;
+  border-radius: 6px;
+}
+
+.progress-fill {
+  height: 100%;
+  background-color: var(--accent-color);
+  border-radius: 6px;
+  transition: width 0.4s ease;
+}
+
+.no-goals {
+  color: #777;
+}
+
+/* ---------- Quick Actions ---------- */
+.quick-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.quick-actions button {
+  flex: 1 1 130px;
+  padding: 0.75rem 1rem;
+  border: none;
+  border-radius: 12px;
+  background-color: var(--primary-color);
+  color: #fff;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+}
+
+.quick-actions button:hover {
+  background-color: var(--secondary-color);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 992px) {
+  .quick-stats-section {
+    flex-direction: column;
+  }
+  .quick-actions {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 576px) {
+  .dashboard-today-summary {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .goal-card {
+    padding: 0.6rem 0.8rem;
+  }
+  .quick-stat-card {
+    padding: 0.8rem;
+  }
+}

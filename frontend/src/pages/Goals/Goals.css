@@ -1,0 +1,830 @@
+/* ===========================
+   Page Container
+=========================== */
+.goals-page {
+  display: flex;
+  flex-direction: column; /* default for mobile */
+  gap: 40px;
+  margin: 20px auto;
+  font-family: Arial, sans-serif;
+  width: 100%;
+  padding: 20px 40px;
+  box-sizing: border-box;
+  
+
+  /* theme-aware */
+  background-color: var(--bg-color);
+  color: var(--text-color);
+   /* New background image */
+  /* background-image: url('../../assets/images/goals-page.jpg'); */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+}
+.goals-page::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3); /* dark overlay for readability */
+    z-index: 0;
+}
+
+.goals-page > * {
+    position: relative; /* content stays above overlay */
+    z-index: 1;
+}
+
+/* ===========================
+   Layout: Left + Right Panels
+=========================== */
+.goals-layout {
+  display: flex;
+  flex-direction: row; /* desktop: two columns */
+  gap: 30px;
+  width: 100%;
+  align-items: flex-start; /* top-align panels */
+}
+
+/* Left Panel */
+.left-panel {
+  flex: 0 0 40%; /* fixed width for left panel */
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center; /* horizontally center items */
+}
+
+/* Right Panel */
+.right-panel {
+  flex: 1; /* fill remaining space */
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* ===========================
+   Circular Progress
+=========================== */
+.progress-circle {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  margin-top: 120px;
+  margin-bottom: 80px;
+  transition: transform 0.3s ease;
+}
+
+.progress-circle:hover {
+  transform: scale(1.6);
+}
+
+.progress-circle svg {
+  width: 300px;
+  height: 300px;
+  transform: rotate(-90deg);
+}
+
+.progress-circle circle {
+  fill: none;
+  stroke-width: 20;
+  cx: 150;
+  cy: 150;
+  r: 130;
+}
+
+.progress-circle .bg {
+  stroke: #eee;
+}
+
+.progress-circle .progress {
+  fill: none;
+  stroke-dasharray: 817.8;
+  stroke-dashoffset: 817.8;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.5s ease, stroke 0.3s ease;
+}
+.progress-circle svg {
+  transform: rotate(-90deg);
+}
+
+
+.progress-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.progress-text span {
+  font-size: 36px;
+  font-weight: bold;
+  color: var(--text-color);
+}
+
+.progress-text small {
+  display: block;
+  font-size: 18px;
+  color: var(--text-color);
+}
+@media (max-width: 480px) {
+  .progress-circle {
+    width: 180px;
+    height: 180px;
+    margin-top: 60px;
+    margin-bottom: 40px;
+  }
+
+  .progress-circle:hover {
+    transform: none; /* disable zoom on mobile */
+  }
+
+  .progress-circle svg {
+    width: 180px;
+    height: 180px;
+  }
+
+  .progress-circle circle {
+    stroke-width: 14;
+    cx: 90;
+    cy: 90;
+    r: 76;
+  }
+
+  .progress-text span {
+    font-size: 22px;
+  }
+
+  .progress-text small {
+    font-size: 14px;
+  }
+}
+@media (max-width: 768px) {
+  .progress-circle {
+    width: 220px;
+    height: 220px;
+    margin-top: 80px;
+    margin-bottom: 50px;
+  }
+
+  .progress-circle:hover {
+    transform: scale(1.2);
+  }
+
+  .progress-circle svg {
+    width: 220px;
+    height: 220px;
+  }
+
+  .progress-circle circle {
+    stroke-width: 16;
+    cx: 110;
+    cy: 110;
+    r: 94;
+  }
+
+  .progress-text span {
+    font-size: 26px;
+  }
+
+  .progress-text small {
+    font-size: 15px;
+  }
+}
+
+/* ===========================
+   Add Goal Form
+=========================== */
+.add-goal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  width: 100%;
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 30px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.2); /* glass effect */
+  backdrop-filter: blur(12px); /* blur background */
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.25); /* subtle border for glass look */
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1); /* layered shadow */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.add-goal-form:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* Form Title */
+.add-goal-form .form-title {
+  margin: 0 0 10px 0;
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: var(--text-color);
+  text-align: center;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Inputs and Textarea */
+.add-goal-form input,
+.add-goal-form .goal-textarea {
+  width: 100%;
+  padding: 14px 18px;
+  border-radius: 12px;
+  border: none;
+  font-size: 16px;
+  background-color: rgba(255, 255, 255, 0.2); /* translucent input */
+  color: var(--text-color);
+  box-shadow: inset 0 2px 6px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+
+.add-goal-form input:focus,
+.add-goal-form .goal-textarea:focus {
+  outline: none;
+  box-shadow: 0 0 10px var(--accent-color);
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Button */
+.add-goal-form button {
+  padding: 14px 20px;
+  border-radius: 12px;
+  border: none;
+  font-weight: 700;
+  font-size: 1rem;
+  background: linear-gradient(135deg, var(--button-bg), var(--button-hover-bg));
+  color: var(--button-text);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+}
+
+.add-goal-form button:hover {
+  transform: scale(1.03);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+/* Responsive */
+@media (max-width: 800px) {
+  .add-goal-form {
+    padding: 20px;
+    margin: 20px;
+  }
+}
+
+/* ===========================
+   Goals List
+=========================== */
+.goals-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* ===========================
+   Goal Card
+=========================== */
+.goal-card {
+  position: relative;
+   padding: 25px 20px 120px 20px;
+  padding-bottom: 90px;
+  border-radius: 20px;
+  color: var(--text-color);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  height: auto;  /* Allow card to grow/shrink based on content */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.goal-card p {
+  margin: 0; /* Remove any default margin */
+  overflow-wrap: break-word; /* Ensure text wraps within card */
+  word-wrap: break-word;
+  word-break: break-word; /* Break long words if needed */
+}
+
+.goal-card .goal-time-left {
+  flex-grow: 2; /* Allow the time-left section to grow, if necessary */
+  overflow-wrap: break-word;
+}
+
+/* Hover effect for interaction */
+.goal-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+}
+
+/* Completed card style */
+.goal-card.completed {
+  border-left: 5px solid #28a745; /* green indicator */
+  opacity: 0.9;
+}
+
+
+
+/* Optional: animate tick on appear */
+.goal-card.completed .completed-tick {
+  transform: scale(1);
+}
+
+/* Buttons container (optional if still using buttons) */
+.goal-card-buttons {
+  display: flex;
+  gap: 12px;
+  justify-content: space-between; /* tick left, delete right */
+  margin-top: 30px;
+}
+/* Complete / Incomplete toggle at bottom-left */
+.completed-toggle-btn {
+   position: absolute;   /* relative to .goal-card */
+  bottom: 15px;         /* distance from bottom */
+  left: 15px;           /* distance from left */
+  background: none;
+  border: none;
+  font-size: 1.6rem;     /* size of the tick */
+  color: #28a745;        /* green for complete */
+  cursor: pointer;
+  transition: transform 0.2s, color 0.2s;
+}
+
+.completed-toggle-btn:hover {
+  transform: scale(1.2); /* subtle hover effect */
+  color: #1f7a2f;       /* darker green on hover */
+}
+
+/* Optional: if goal is marked completed, make tick fully visible */
+.completed-toggle-btn.completed {
+  color: #ffffff; /* white if background is green */
+}
+
+/* Icon buttons styling */
+.icon-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+  color: var(--accent-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s, color 0.2s;
+}
+
+.icon-btn:hover {
+  transform: scale(1.2);
+  color: var(--button-bg);
+}
+
+.icon-btn.completed {
+  color: #28a745;
+}
+
+/* Delete button at bottom-right */
+.delete-icon-btn {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #dc3545;
+  cursor: pointer;
+  transition: transform 0.2s, color 0.2s;
+}
+
+.delete-icon-btn:hover {
+  transform: scale(1.2);
+  color: #ff4d4d;
+}
+
+/* Card title & description styling */
+.goal-card h3 {
+  margin: 0;
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.goal-card p {
+  margin: 0;
+  font-size: 1rem;
+  color: var(--text-color);
+  opacity: 0.85;
+}
+/* Completed card background */
+.goal-card.completed {
+  background-color: #28a745; /* green */
+  color: #ffffff; /* text becomes white for contrast */
+  border-left: 10px solid #1f7a2f; /* optional darker green accent */
+  opacity: 1; /* make fully visible */
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Optional: dim description slightly */
+.goal-card.completed p {
+  opacity: 0.95;
+}
+
+/* ===========================
+   Goal Card Responsive
+=========================== */
+
+/* Mobile: up to 480px */
+@media (max-width: 480px) {
+  .goal-card {
+    padding: 15px 12px;
+    border-radius: 15px;
+    min-height: 120px;
+    gap: 8px;
+    padding-bottom: 60px; /* leave space for tick & delete buttons */
+    min-height: auto;      /* allow height to grow with content */
+  }
+
+  .goal-card h3 {
+    font-size: 1.1rem;
+  }
+
+  .goal-card p {
+    font-size: 0.9rem;
+  }
+
+  .completed-toggle-btn {
+     bottom: 15px;          /* distance from bottom */
+    left: 15px;            /* stay in bottom-left corner */
+    font-size: 1.2rem;     /* slightly smaller */
+  }
+
+  .delete-icon-btn {
+     bottom: 15px;          /* distance from bottom */
+    right: 15px;            /* stay in bottom-left corner */
+    font-size: 1.2rem;     /* slightly smaller */
+  }
+
+  .goal-card-buttons {
+    gap: 8px;
+    margin-top: 8px;
+  }
+
+  .icon-btn {
+    font-size: 1.2rem;
+  }
+}
+
+/* Small tablets: 481px – 768px */
+@media (max-width: 768px) and (min-width: 481px) {
+  .goal-card {
+    padding: 20px 16px;
+    border-radius: 18px;
+    min-height: 135px;
+    gap: 10px;
+  }
+
+  .goal-card h3 {
+    font-size: 1.2rem;
+  }
+
+  .goal-card p {
+    font-size: 0.95rem;
+  }
+
+  .completed-toggle-btn {
+    bottom: 12px;
+    left: 12px;
+    font-size: 1.4rem;
+  }
+
+  .delete-icon-btn {
+    bottom: 12px;
+    right: 12px;
+    font-size: 1.4rem;
+  }
+
+  .goal-card-buttons {
+    gap: 10px;
+    margin-top: 9px;
+  }
+
+  .icon-btn {
+    font-size: 1.4rem;
+  }
+}
+
+/* Laptops & small desktops: 769px – 1200px */
+@media (max-width: 1200px) and (min-width: 769px) {
+  .goal-card {
+    padding: 22px 18px;
+    border-radius: 20px;
+    min-height: 145px;
+    gap: 11px;
+  }
+
+  .goal-card h3 {
+    font-size: 1.25rem;
+  }
+
+  .goal-card p {
+    font-size: 0.975rem;
+  }
+
+  .completed-toggle-btn {
+    bottom: 13px;
+    left: 13px;
+    font-size: 1.5rem;
+  }
+
+  .delete-icon-btn {
+    bottom: 13px;
+    right: 13px;
+    font-size: 1.5rem;
+  }
+
+  .goal-card-buttons {
+    gap: 11px;
+    margin-top: 9px;
+  }
+
+  .icon-btn {
+    font-size: 1.45rem;
+  }
+}
+
+/* Large screens: 1201px+ */
+@media (min-width: 1201px) {
+  .goal-card {
+    padding: 25px 20px;
+    border-radius: 20px;
+    min-height: 150px;
+    gap: 12px;
+  }
+
+  .goal-card h3 {
+    font-size: 1.3rem;
+  }
+
+  .goal-card p {
+    font-size: 1rem;
+  }
+
+  .completed-toggle-btn {
+    bottom: 15px;
+    left: 15px;
+    font-size: 1.6rem;
+  }
+
+  .delete-icon-btn {
+    bottom: 15px;
+    right: 15px;
+    font-size: 1.5rem;
+  }
+
+  .goal-card-buttons {
+    gap: 12px;
+    margin-top: 10px;
+  }
+
+  .icon-btn {
+    font-size: 1.5rem;
+  }
+}
+
+/* ===========================
+   Responsive: Mobile
+=========================== */
+@media (max-width: 800px) {
+  .goals-layout {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .left-panel,
+  .right-panel {
+    width: 100%;
+    align-items: center;
+  }
+
+  .add-goal-form {
+    width: 100%;
+  }
+}
+.progress-container {
+  max-width: 450px;
+  margin: 20px auto;
+  font-family: 'Inter', sans-serif;
+}
+
+.progress-label {
+  text-align: right;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: var(--text-color, #333);
+}
+
+.progress-track {
+  width: 100%;
+  height: 16px;
+  background: #e0e0e0; /* light grey track */
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #2c666e, #3ab0c1); /* gradient */
+  border-radius: 12px 0 0 12px;
+  transition: width 0.6s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 8px;
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.8rem;
+}
+/* Countdown timer inside goal card */
+/* .goal-timer {
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-top: 10px;
+  color: #2c666e;
+} */
+.goal-timer {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #ff9800;
+  margin: 6px 0 10px 0;
+}
+
+.goal-timer.expired {
+  color: #dc3545; /* red when expired */
+  font-weight: 700;
+}
+/* Duration input + select container */
+.goal-duration {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+/* Number input */
+.goal-duration input[type="number"] {
+  flex: 1;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.3);
+  background-color: rgba(255,255,255,0.2);
+  color: var(--text-color);
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.goal-duration input[type="number"]:focus {
+  border-color: var(--button-bg);
+  box-shadow: 0 0 8px rgba(0,0,0,0.2);
+}
+
+/* Select dropdown */
+.goal-duration select {
+  flex: 1;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.3);
+  background-color: rgba(255,255,255,0.2);
+  color: var(--text-color);
+  font-size: 1rem;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.goal-duration select:hover,
+.goal-duration select:focus {
+  border-color: var(--button-bg);
+  box-shadow: 0 0 8px rgba(0,0,0,0.2);
+}
+
+/* Optional: arrow style for select */
+.goal-duration select::-ms-expand {
+  display: none; /* hide default arrow in IE */
+}
+
+
+
+
+
+.progress-circle-container {
+  position: relative;
+  width: 80%;
+  max-width: 250px;
+  margin: 40px auto 20px auto;
+}
+
+.progress-circle-svg {
+  width: 100%;
+  height: auto;
+  transform: rotate(-90deg);
+}
+
+.progress-bg {
+  fill: none;
+  stroke: #e0e0e0;
+}
+
+.progress-fill {
+  transition: stroke-dashoffset 0.5s ease, stroke 0.5s ease;
+}
+
+.progress-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.progress-text span {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--text-color);
+}
+
+.progress-text small {
+  display: block;
+  font-size: 1rem;
+  color: var(--text-color);
+}
+
+.summary {
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--text-color);
+  margin-top: 12px;
+}
+
+/* Mobile adjustments */
+@media (max-width: 480px) {
+  .progress-text span {
+    font-size: 1.5rem;
+  }
+  .progress-text small {
+    font-size: 0.8rem;
+  }
+  .progress-circle-container {
+    max-width: 180px;
+    margin: 30px auto 15px auto;
+  }
+}
+/* ======================
+   Progress Circle Hover (Desktop only)
+====================== */
+.progress-circle-container:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+}
+
+
+/* Hover effect only on devices wider than 480px */
+@media (hover: hover) and (pointer: fine) {
+  .completed-toggle-btn:hover {
+    transform: scale(1.2);
+    color: #16a34a; /* darker green on hover */
+  }
+}
+
+/* Disable hover / scale on mobile */
+@media (max-width: 480px) {
+  .completed-toggle-btn:hover {
+    transform: none;
+  }
+}
+/* Remove focus outline and tap highlight */
+/* Remove blue highlight and outline on mobile buttons */
+.completed-toggle-btn,
+.delete-icon-btn,
+button {
+  outline: none; /* remove focus outline */
+  -webkit-tap-highlight-color: transparent; /* remove tap highlight on iOS/Android */
+  -webkit-focus-ring-color: transparent; /* remove extra focus ring on Safari */
+ 
+  -moz-focusring: 0; /* Firefox */
+}
+
+/* Optional: keep cursor pointer for clarity */
+.completed-toggle-btn,
+.delete-icon-btn {
+  cursor: pointer;
+}

@@ -1,0 +1,152 @@
+.habits-page {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  padding: 20px 40px;
+  font-family: Arial, sans-serif;
+
+  min-height: 100vh; /* ensures it fills the viewport height */
+  box-sizing: border-box;
+  justify-content: flex-start; /* change to center if you want habits centered horizontally */
+  align-items: flex-start; /* keeps cards aligned at top */
+}
+
+/* Left panel */
+.habits-left-panel {
+  flex: 1 1 300px;
+  max-width: 400px;
+  background: #fff;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  touch-action: auto; /* allows taps on mobile */
+}
+
+.habit-form h3 {
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+  color: #2c666e;
+}
+
+.habit-form input {
+  width: 100%;
+  padding: 10px 12px;
+  margin-bottom: 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+.habit-form button {
+  padding: 10px 20px;
+  background: #2c666e;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.habit-form button:hover {
+  background: #3ab0c1;
+}
+
+/* Right panel */
+.habits-right-panel {
+  flex: 2 1 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.habits-right-panel h3 {
+  margin-bottom: 10px;
+  color: #2c666e;
+}
+
+.habit-card {
+  background: #fff;
+  padding: 15px 20px;
+  border-radius: 16px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.habit-actions button {
+  background: none;
+  border: none;
+  font-size: 1rem;
+  color: #2c666e;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.habit-actions button:hover {
+  color: #3ab0c1;
+}
+
+.no-habits {
+  color: #888;
+  font-style: italic;
+}
+
+/* Habit checkboxes - mobile friendly */
+.habit-item label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  width: 100%;
+  touch-action: manipulation; /* ensures checkbox taps register on mobile */
+  padding: 4px 0;
+}
+
+.habit-item input[type="checkbox"] {
+  margin-right: 10px;
+  width: 20px; /* bigger for mobile */
+  height: 20px;
+  accent-color: #2c666e;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .habits-page {
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .habits-left-panel,
+  .habits-right-panel {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 500px) {
+  .habits-page {
+    gap: 20px;
+    padding: 10px 15px;
+  }
+
+  .habit-form input {
+    padding: 8px 10px;
+    font-size: 0.95rem;
+  }
+
+  .habit-form button {
+    padding: 8px 12px;
+    font-size: 0.95rem;
+  }
+
+  .habit-card {
+    padding: 12px 15px;
+  }
+
+  .habit-item input[type="checkbox"] {
+    width: 24px;
+    height: 24px;
+    margin-right: 12px;
+  }
+}

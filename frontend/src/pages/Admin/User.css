@@ -1,0 +1,92 @@
+.users-page {
+  padding: 1rem;
+}
+
+.users-page h2 {
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+/* Table container for horizontal scroll on small screens */
+.users-table-container {
+  width: 100%;
+  overflow-x: auto;
+  background-color: var(--card-bg);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  padding: 1rem;
+}
+
+.users-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 600px; /* table scrolls on smaller screens */
+}
+
+.users-table th,
+.users-table td {
+  padding: 0.8rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.users-table th {
+  background-color: var(--bg-light);
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+.edit-btn,
+.delete-btn {
+  padding: 0.4rem 0.7rem;
+  margin-right: 0.4rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.edit-btn {
+  background-color: var(--accent-color);
+  color: #fff;
+}
+
+.edit-btn:hover {
+  background-color: #3a9e41;
+}
+
+.delete-btn {
+  background-color: #e53935;
+  color: #fff;
+}
+
+.delete-btn:hover {
+  background-color: #c62828;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .users-table th,
+  .users-table td {
+    padding: 0.6rem 0.8rem;
+  }
+
+  .edit-btn,
+  .delete-btn {
+    padding: 0.3rem 0.6rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .users-table {
+    min-width: 400px;
+  }
+
+  .edit-btn,
+  .delete-btn {
+    padding: 0.2rem 0.5rem;
+    font-size: 0.8rem;
+  }
+}

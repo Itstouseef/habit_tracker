@@ -1,0 +1,131 @@
+.app-container {
+  padding: 20px;
+}/* ==========================
+   Global Light/Dark Theme
+========================== */
+.journal-page-container {
+  position: relative;
+  z-index: 10;
+}
+canvas {
+  pointer-events: none !important;
+}
+/* ================== MOBILE TAP HIGHLIGHT FIX ================== */
+/* Remove black border/highlight when tapping panels or charts */
+.panel,
+.panel * {
+  -webkit-tap-highlight-color: transparent; /* iOS Safari & Chrome */
+  outline: none; /* fallback for desktop focus */
+}
+
+/* Optional: ensure buttons and inputs still show focus */
+button:focus,
+input:focus,
+textarea:focus,
+select:focus {
+  outline: 2px solid var(--primary); /* subtle visible focus for accessibility */
+  outline-offset: 2px;
+}
+
+/* Light Theme */
+/* Light Theme */
+body.light {
+  /* Page Background */
+  --bg-color: rgba(255, 255, 255, 0.9); /* slightly more opaque for clarity */
+  --text-color: #1c1c1c; /* softer black for better readability */
+  --header-bg: #ffffff; 
+  --header-text: #1c1c1c; 
+
+  /* Card Styles */
+  --card-bg: rgba(255, 255, 255, 0.95); /* soft white, separates from page bg */
+  --card-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* slightly stronger, more depth */
+  --card-border-radius: 14px; /* smoother edges */
+  
+  /* Button Styles */
+  --button-bg: #2c666e;
+  --button-text: #ffffff;
+  --button-hover-bg: #1f4d53; /* subtle hover color */
+  --button-shadow: 0 3px 8px rgba(0,0,0,0.08); /* soft shadow for buttons */
+  
+  /* Accent / Highlight Colors */
+  --accent-color: #2c666e; /* for links, highlights, icons */
+  --input-bg: #ffffff; /* input fields */
+  --input-border: #cccccc; /* subtle border for inputs */
+  --input-placeholder: #888888; /* softer placeholder text */
+
+   --input-bg: #ffffff;
+  --text-color: #1c1c1c;
+  --accent-color: #2c666e;
+  --card-bg: rgba(255,255,255,0.95);
+  --button-bg: #2c666e;
+  --button-hover-bg: #1f4d53;
+  --button-text: #ffffff;
+}
+
+
+/* Dark Theme */
+/* Dark Theme */
+body.dark {
+  /* Page Background */
+  --bg-color: #121212; /* deep dark background */
+  --text-color: #e0e0e0; /* softer white for less strain on eyes */
+  --header-bg: #1f1f1f; 
+  --header-text: #ffffff;
+
+  /* Card Styles */
+  --card-bg: #1e1e1e; /* slightly lighter than page for contrast */
+  --card-shadow: 0 8px 20px rgba(0, 0, 0, 0.5); /* subtle dark shadow for depth */
+  --card-border-radius: 14px; /* smooth edges for modern look */
+
+  /* Button Styles */
+  --button-bg: #1f4d53; /* calm teal/blue tone */
+  --button-text: #ffffff;
+  --button-hover-bg: #166064; /* slightly brighter on hover */
+  --button-shadow: 0 3px 8px rgba(0,0,0,0.5); /* soft shadow for buttons */
+
+  /* Accent / Highlight Colors */
+  --accent-color: #1f4d53; /* for links, highlights, icons */
+  --input-bg: #1a1a1a; /* input fields */
+  --input-border: #333333; /* subtle border for inputs */
+  --input-placeholder: #aaaaaa; /* lighter placeholder text */
+    --input-bg: #1a1a1a;
+  --text-color: #e0e0e0;
+  --accent-color: #1f4d53;
+  --card-bg: #1e1e1e;
+  --button-bg: #1f4d53;
+  --button-hover-bg: #166064;
+  --button-text: #ffffff;
+}
+
+/* Apply global variables */
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Header */
+header {
+  background-color: var(--header-bg);
+  color: var(--header-text);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Links */
+a {
+  color: var(--text-color);
+}
+
+/* Buttons */
+button {
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Cards (example) */
+.goal-card {
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  transition: background-color 0.3s, color 0.3s;
+}
