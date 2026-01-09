@@ -1,4 +1,4 @@
-import "./NavLinks.css";
+import "./Navlinks.css";
 import { Link } from "react-router-dom";
 
 function NavLinks({ closeMenu }) {
